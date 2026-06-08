@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/public/logo.jpeg" />
+    
+    <!-- Core Responsive Viewport (Keeps layout scales 1:1 on mobile devices) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <title>THE BLACKFAHD</title>
+
+    <!-- Google Fonts: Premium Athletic Typography (Inter + Syncopate) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Global Responsive System Styles -->
+    <style>
+      /* Prevent horizontal layout breaks and layout shifting on small touchscreens */
+      html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+        background-color: #0d0d10;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Custom premium scrollbar styling for desktop viewports */
+      @media (min-width: 768px) {
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #0d0d10;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #222226;
+          border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #d4af37; /* Accent Gold */
+        }
+      }
+
+      /* Base typography assignments to ensure scales match nicely on mobile components */
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .font-display {
+        font-family: 'Syncopate', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
