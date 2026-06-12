@@ -19,7 +19,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg text-jaguar-400 max-w-md leading-relaxed">
-            Designed for both athletes and everyday fitness goals, we deliver professional coaching tailored exactly to your ambitions.
+            From competitive athletes to everyday fitness goals professional coaching tailored exactly to your ambitions.
           </p>
 
           <div className="flex flex-wrap gap-4">

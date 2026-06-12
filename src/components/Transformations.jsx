@@ -24,54 +24,52 @@ const Transformations = () => {
 
   const showcaseCards = [
     { 
-      title: "ACHIEVE // 01", 
-      duration: "104 Days", 
+     
+      duration: "3 Months", 
       meta: "DAY 0 / MUSCLE GAIN & FAT LOSS / Day 104",
       combinedImg: img1 
     },
     { 
-      title: "ACHIEVE // 02", 
-      duration: "90 Days", 
+      
+      duration: "3 Months", 
       meta: "DAY 0 / BODY RECOMP / DAY 90",
       combinedImg: img2 
     },
     { 
-      title: "ACHIEVE // 03", 
+       
       duration: "1 Month", 
       meta: "DAY 0 / FAT LOSS / Day 30",
       combinedImg: img3 
     },
     { 
-      title: "ACHIEVE // 04", 
-      duration: "30 Days", 
+      
+      duration: "1 Months", 
       meta: "DAY 0 / FAT LOSS / Day 30",
       combinedImg: img4 
     },
     { 
-      title: "ACHIEVE // 05", 
-      duration: "90 Days", 
+       
+      duration: "3 Months", 
       meta: "DAY 0 / FAT LOSS / Day 90",
       combinedImg: img5 
     },
     { 
-      title: "ACHIEVE // 06", 
+      
       duration: "WEEK 14", 
-      meta: "DAY 0 / MUSCLE GAIN / 14 WEEKS",
-      combinedImg: img6, 
-      isFullAsset: true 
+      meta: "DAY 0 / MUSCLE GAIN / 98 Days",
+      combinedImg: img6 
     },
-    { title: "ACHIEVE // 07", duration: "12 MONTHS", meta: "DAY 0 / EXTREME TRANSFORMATION / MON 12", combinedImg: img7 },
-    { title: "ACHIEVE // 08", duration: "14 WEEKS", meta: "DAY 0 / MUSCLE GAIN / 14 WEEKS", combinedImg: img8 },
-    { title: "ACHIEVE // 10", duration: "14 WEEKS", meta: "DAY 0 / MUSCLE GAIN / 14 WEEKS", combinedImg: img10 },
-    { title: "ACHIEVE // 11", duration: "14 WEEKS", meta: "DAY 0 / MUSCLE GAIN / 14 WEEKS", combinedImg: img11 },
-    { title: "ACHIEVE // 12", duration: "60 Days", meta: "DAY 0 / MUSCLE GAIN / Days 60", combinedImg: img12 },
-    { title: "ACHIEVE // 13", duration: "6 MONTHS", meta: "DAY 0 / FAT LOSS / Day 60", combinedImg: img13 },
+    {  duration: "5 Months", meta: "DAY 0 / MUSCLE GAIN / 180 Days", combinedImg: img7 },
+    {  duration: "14 Weeks", meta: "DAY 0 / MUSCLE GAIN / 98 Days", combinedImg: img8 },
+    {  duration: "14 Weeks", meta: "DAY 0 / MUSCLE GAIN / 98 Days", combinedImg: img10 },
+    {  duration: "14 Weeks", meta: "DAY 0 / MUSCLE GAIN / 98 Days", combinedImg: img11 },
+    {  duration: "2 Months", meta: "DAY 0 / MUSCLE GAIN / 60 Days", combinedImg: img12 },
+    {  duration: "2 Months", meta: "DAY 0 / FAT LOSS / 60 DDays", combinedImg: img13 },
     { 
-      title: "ACHIEVE // 14", 
+      
       duration: "90 Day", 
       meta: "DAY 0 / MASS & CONDITIONING / DAY 90",
-      combinedImg: img14, 
-      isFullAsset: true 
+      combinedImg: img14 
     },
   ];
 
@@ -97,44 +95,33 @@ const Transformations = () => {
               {/* Image Container Layout */}
               <div className="aspect-[4/3] bg-black border-b border-white/5 relative overflow-hidden">
                 
-                {card.isFullAsset ? (
-                  <div className="w-full h-full relative">
-                    <img 
-                      src={card.combinedImg} 
-                      alt={card.title}
-                      className="w-full h-full object-cover object-center grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
-                    />
+                <div className="w-full h-full flex divide-x divide-white/5">
+                  {/* Left Side (Before Image Segment) */}
+                  <div className="w-1/2 h-full relative overflow-hidden">
+                    {card.combinedImg && (
+                      <div 
+                        className="absolute inset-0 w-[200%] h-full bg-cover bg-left grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                        style={{ backgroundImage: `url(${card.combinedImg})` }}
+                      />
+                    )}
                   </div>
-                ) : (
-                  <div className="w-full h-full flex divide-x divide-white/5">
-                    <div className="w-1/2 h-full relative overflow-hidden">
-                      {card.combinedImg && (
-                        <div 
-                          className="absolute inset-0 w-[200%] h-full bg-cover bg-left grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
-                          style={{ backgroundImage: `url(${card.combinedImg})` }}
-                        />
-                      )}
-                    </div>
 
-                    <div className="w-1/2 h-full relative overflow-hidden">
-                      {card.combinedImg && (
-                        <div 
-                          className="absolute inset-0 w-[200%] h-full bg-cover bg-right grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
-                          style={{ 
-                            backgroundImage: `url(${card.combinedImg})`,
-                            left: '-100%'
-                          }}
-                        />
-                      )}
-                    </div>
+                  {/* Right Side (After Image Segment) */}
+                  <div className="w-1/2 h-full relative overflow-hidden">
+                    {card.combinedImg && (
+                      <div 
+                        className="absolute inset-0 w-[200%] h-full bg-cover bg-right grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                        style={{ 
+                          backgroundImage: `url(${card.combinedImg})`,
+                          left: '-100%'
+                        }}
+                      />
+                    )}
                   </div>
-                )}
+                </div>
 
                 {/* --- PREMIUM STRATEGIC BLACK FADE OVERLAYS --- */}
-                {/* Smooth vignette masking layer */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 opacity-100 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none z-[2]"></div>
-                
-                {/* Micro clean shadow line directly on splitting frame borders */}
                 <div className="absolute inset-0 bg-black/10 mix-blend-multiply z-[2] pointer-events-none"></div>
 
                 {/* --- HOVER TACTICAL EXPANSION INDICATOR --- */}
@@ -144,10 +131,8 @@ const Transformations = () => {
                   </div>
                 </div>
 
-                {/* Before / After corner layout badges */}
-                <div className={`absolute bg-black/70 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white/80 px-3 py-1.5 rounded-lg border border-white/10 select-none z-10 transition-all ${
-                  card.isFullAsset ? 'top-4 left-4' : 'bottom-4 left-4'
-                }`}>
+                {/* Before / After unified bottom alignment badges */}
+                <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md text-[10px] font-black uppercase tracking-widest text-white/80 px-3 py-1.5 rounded-lg border border-white/10 select-none z-10 transition-all">
                   Before
                 </div>
 
@@ -208,9 +193,7 @@ const Transformations = () => {
                 className="w-full h-auto max-h-[70vh] object-contain"
               />
 
-              <div className={`absolute bg-black/70 backdrop-blur-md text-xs font-black uppercase tracking-widest text-white px-4 py-2 rounded-xl border border-white/10 select-none ${
-                activeLightbox.isFullAsset ? 'top-4 left-4' : 'bottom-4 left-4'
-              }`}>
+              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md text-xs font-black uppercase tracking-widest text-white px-4 py-2 rounded-xl border border-white/10 select-none">
                 Before
               </div>
               

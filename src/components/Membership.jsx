@@ -2,70 +2,6 @@ import { Check, Dumbbell, ShieldCheck, Target, Crown } from 'lucide-react';
 
 const Membership = () => {
   const membershipPacks = [
-
-    {
-
-      id: 1,
-
-      name: "PACK 1 — STARTER",
-
-      duration: "30 DAYS",
-
-      price: "149 DT",
-
-      ctaText: "Starter Plan",
-
-      idealFor: "Beginners / Fat loss / Muscle gain basics / Restart fitness journey",
-
-      included: [
-
-        "Customized Training Program",
-
-        "Personalized Nutrition Plan",
-
-        "Cardio Protocol (if needed)",
-
-        "Weekly Check-ins",
-
-        "Direct Coaching Support (WhatsApp / DM)",
-
-        "Basic Form & Technique Guidance"
-
-      ],
-
-      expectations: [
-
-        "Structured training & nutrition",
-
-        "Improved body composition (fat loss or lean muscle gain)",
-
-        "Better discipline & consistency"
-
-      ],
-
-      bestFor: [
-
-        "Fat loss start",
-
-        "Lean muscle gain foundation",
-
-        "Beginners",
-
-        "Getting back in shape"
-
-      ],
-
-      isVip: false
-
-    },
-
-
-
-
-
-
-
-    
     {
       id: 2,
       name: "PACK 2 — TRANSFORMATION",
@@ -94,6 +30,34 @@ const Membership = () => {
         "Lean muscle gain",
         "Body recomposition",
         "People wanting real transformation in 3 months"
+      ],
+      isVip: false
+    },
+    {
+      id: 1,
+      name: "PACK 1 — STARTER",
+      duration: "30 DAYS",
+      price: "149 DT",
+      ctaText: "Starter Plan",
+      idealFor: "Beginners / Fat loss / Muscle gain basics / Restart fitness journey",
+      included: [
+        "Customized Training Program",
+        "Personalized Nutrition Plan",
+        "Cardio Protocol (if needed)",
+        "Weekly Check-ins",
+        "Direct Coaching Support (WhatsApp / DM)",
+        "Basic Form & Technique Guidance"
+      ],
+      expectations: [
+        "Structured training & nutrition",
+        "Improved body composition (fat loss or lean muscle gain)",
+        "Better discipline & consistency"
+      ],
+      bestFor: [
+        "Fat loss start",
+        "Lean muscle gain foundation",
+        "Beginners",
+        "Getting back in shape"
       ],
       isVip: false
     },
@@ -206,7 +170,7 @@ const Membership = () => {
                 pack.isVip 
                   ? 'border-2 border-accent-gold/60 bg-[#141419] shadow-[0_0_40px_rgba(212,175,55,0.15)] scale-[1.01]' 
                   : pack.isPopular
-                    ? 'border border-accent-gold/40 bg-[#111115] shadow-[0_0_30px_rgba(212,175,55,0.05)]'
+                    ? 'border border-accent-gold/50 bg-[#111115] shadow-[0_0_30px_rgba(212,175,55,0.05)]'
                     : 'border border-white/5 bg-[#111115] hover:border-accent-gold/30'
               }`}
             >
@@ -224,7 +188,7 @@ const Membership = () => {
                 <div>
                   {/* Dynamic Popular Badge Placement right above title block */}
                   {pack.isPopular && (
-                    <div className="mb-3 inline-flex items-center gap-1.5 bg-accent-gold text-black font-black text-[10px] tracking-widest uppercase px-3 py-1 rounded-md shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                    <div className="mb-4 inline-flex items-center gap-2 bg-accent-gold text-black font-black text-xs tracking-widest uppercase px-4 py-2 rounded-xl shadow-[0_0_25px_rgba(212,175,55,0.45)] border border-white/20">
                       🔥 {pack.badgeText}
                     </div>
                   )}

@@ -83,7 +83,7 @@ function App() {
       </motion.div> 
 
       <footer className="py-12 text-center text-jaguar-500 border-t border-white/5">
-        <p>© 2026 THE BLACKFAHD. ALL RIGHTS RESERVED.</p>
+        <p>© 2026 BLACKFAHD. ALL RIGHTS RESERVED.</p>
       </footer>
     </motion.main>
   );
