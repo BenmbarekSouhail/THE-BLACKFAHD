@@ -76,32 +76,8 @@ function App() {
         }`}
       />
 
-      {/* --- FLOATING PREMIUM LANGUAGE SELECTOR --- */}
-      <div className={`fixed top-6 ${lang === 'AR' ? 'left-6' : 'right-6'} z-[100] flex gap-1 bg-black/60 backdrop-blur-md border border-white/10 p-1 rounded-xl shadow-2xl transition-all duration-300`}>
-        <button 
-          onClick={() => setLang('EN')} 
-          className={`px-3 py-1.5 rounded-lg text-xs font-black tracking-wider transition-all duration-300 ${
-            lang === 'EN' 
-              ? 'bg-accent-gold text-black shadow-md' 
-              : 'text-white/60 hover:text-white'
-          }`}
-        >
-          EN
-        </button>
-        <button 
-          onClick={() => setLang('AR')} 
-          className={`px-3 py-1.5 rounded-lg text-xs font-black tracking-wider transition-all duration-300 ${
-            lang === 'AR' 
-              ? 'bg-accent-gold text-black shadow-md' 
-              : 'text-white/60 hover:text-white'
-          }`}
-        >
-          AR
-        </button>
-      </div>
-
-      {/* Passing down language metrics and navigation callbacks */}
-      <Navbar onNavClick={triggerBlindTransition} lang={lang} />
+      {/* Passing down language metrics, state setters, and navigation callbacks to Navbar */}
+      <Navbar onNavClick={triggerBlindTransition} lang={lang} setLang={setLang} />
 
       <Hero lang={lang} />
 
