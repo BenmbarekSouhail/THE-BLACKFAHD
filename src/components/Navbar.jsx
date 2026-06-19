@@ -57,23 +57,23 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass-panel py-2' : 'bg-transparent py-4'
+      isScrolled ? 'glass-panel py-1.5' : 'bg-transparent py-4'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 flex justify-between items-center">
         
-        {/* Left Side: Brand Logo and Title - Balanced Mobile Containment */}
+        {/* Left Side: Big Logo + Safe Visible Text Branding */}
         <a 
           href="/" 
-          className="flex items-center gap-2 sm:gap-4 text-lg md:text-2xl font-black tracking-tighter text-accent-gold uppercase hover:opacity-95 transition-opacity cursor-pointer min-w-0"
+          className="flex items-center gap-1.5 sm:gap-4 font-black tracking-tighter text-accent-gold uppercase hover:opacity-95 transition-opacity cursor-pointer min-w-0"
         >
           <img 
             src={logo} 
             alt="Logo" 
             className={`w-auto object-contain transition-all duration-300 shrink-0 ${
-              isScrolled ? 'h-10 opacity-90' : 'h-14 sm:h-16 md:h-20'
+              isScrolled ? 'h-14 opacity-90' : 'h-20 md:h-26'
             }`} 
           />
-          <span className="inline-block self-center tracking-wider font-black text-xs xs:text-sm sm:text-lg md:text-xl truncate">
+          <span className="inline-block self-center tracking-wider font-black text-[11px] xs:text-sm sm:text-lg md:text-xl truncate">
             BLACK FAHD
           </span>
         </a>
@@ -133,12 +133,12 @@ const Navbar = () => {
           </a>
         </div>
         
-        {/* Right Side: CTA Button Link Container */}
+        {/* Right Side: CTA Button Link Container - Optimized Padding for Mobile */}
         <div className="flex items-center shrink-0">
           <a 
             href="#contact" 
             onClick={(e) => handleNavClick(e, 'contact')}
-            className="bg-accent-gold text-black px-4 py-2 sm:px-5 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold hover:bg-white transition-colors inline-block text-center whitespace-nowrap"
+            className="bg-accent-gold text-black px-3 py-2 sm:px-5 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold hover:bg-white transition-colors inline-block text-center whitespace-nowrap"
           >
             Join The Programme
           </a>
