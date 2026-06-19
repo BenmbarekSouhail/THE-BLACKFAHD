@@ -57,23 +57,23 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass-panel py-3' : 'bg-transparent py-4'
+      isScrolled ? 'glass-panel py-2' : 'bg-transparent py-4'
     }`}>
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
         
         {/* Left Side: Brand Logo and Title */}
         <a 
           href="/" 
-          className="flex items-center gap-3 text-xl md:text-2xl font-bold tracking-tighter text-accent-gold uppercase hover:opacity-90 transition-opacity cursor-pointer"
+          className="flex items-center gap-4 text-2xl md:text-3xl font-black tracking-tighter text-accent-gold uppercase hover:opacity-95 transition-opacity cursor-pointer"
         >
           <img 
             src={logo} 
-            alt="Jaguar Logo" 
+            alt="Logo" 
             className={`w-auto object-contain transition-all duration-300 ${
-              isScrolled ? 'h-12 opacity-80 scale-95' : 'h-16 md:h-20'
+              isScrolled ? 'h-10 opacity-90' :  'h-24 md:h-28'
             }`} 
           />
-          <span className="hidden sm:inline-block self-center">BLACK FAHD</span>
+          <span className="hidden sm:inline-block self-center tracking-widest font-black">BLACK FAHD</span>
         </a>
         
         {/* Center: Navigation Menu links */}

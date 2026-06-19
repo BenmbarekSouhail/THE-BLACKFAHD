@@ -1,12 +1,34 @@
 import { useState } from 'react';
 import { Mail, Phone, Send, ChevronDown, CheckCircle2, AlertTriangle, X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-
-// 1. PLACE YOUR GYM IMAGE INSIDE: src/assets/contact-gym.jpg (or .png)
-// 2. IMPORT IT DIRECTLY HERE:
 import gymPhoto from '../assets/contact-gym.jpg'; 
+import { translations } from '../data/translations';
 
-const Contact = () => {
+const Contact = ({ lang = 'EN' }) => {
+  const activeLang = translations[lang]?.contact ? lang : 'EN';
+  const t = translations[activeLang]?.contact || {
+    toastSuccessHeader: "Inquiry Dispatched",
+    toastSuccessMsg: "Thank you for your trust. Your coaching request has been logged.",
+    toastErrorHeader: "System Alert",
+    toastErrorMsg: "Transmission offline. Please verify connectivity or retry later.",
+    titlePre: "Secure Your",
+    titlePost: "Private Placement.",
+    description: "Completing the official contact form is mandatory to evaluate your profile. Undocumented or direct requests will not be reviewed.",
+    emailUs: "Email Us",
+    whatsappCall: "WhatsApp Call",
+    instantChat: "Instant Chat",
+    labelName: "Full Name",
+    labelEmail: "Email Address",
+    labelPhone: "Mobile Number",
+    labelPack: "Select Program Pack",
+    labelMessage: "Message",
+    placeholderMessage: "How can we help you reach your peak?",
+    btnSending: "Sending...",
+    btnSend: "Send Inquiry"
+  };
+
+  const currentDict = translations[activeLang] || {};
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -52,7 +74,7 @@ const Contact = () => {
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
       .then(() => {
-        triggerNotification('success', 'Thank you for your trust. Your coaching request has been logged.');
+        triggerNotification('success', t.toastSuccessMsg);
         setFormData({
           fullName: '',
           email: '',
@@ -63,7 +85,7 @@ const Contact = () => {
       })
       .catch((error) => {
         console.error("Email delivery failed...", error);
-        triggerNotification('error', 'Transmission offline. Please verify connectivity or retry later.');
+        triggerNotification('error', t.toastErrorMsg);
       })
       .finally(() => {
         setIsSending(false);
@@ -72,13 +94,11 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-32 relative overflow-hidden bg-[#0d0d10] scroll-mt-24">
-      
-      {/* --- EXTRA LARGE PREMIUM TOAST BANNER CONTAINER --- */}
       {notification.show && (
         <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[200] w-full max-w-xl px-4 animate-fade-in">
           <div className={`glass-panel p-6 rounded-2xl border flex items-start gap-5 shadow-2xl backdrop-blur-xl bg-[#111115]/95 transition-all duration-300 ${
             notification.type === 'success' ? 'border-green-500/30 shadow-green-500/10' : 'border-red-500/30 shadow-red-500/10'
-          }`}>
+          } ${lang === 'AR' ? 'text-right flex-row-reverse' : 'text-left'}`}>
             
             {notification.type === 'success' ? (
               <CheckCircle2 className="w-6 h-6 text-green-400 shrink-0 mt-0.5" />
@@ -88,7 +108,7 @@ const Contact = () => {
 
             <div className="flex-1">
               <h4 className="text-white text-base font-bold tracking-tight">
-                {notification.type === 'success' ? 'Inquiry Dispatched' : 'System Alert'}
+                {notification.type === 'success' ? t.toastSuccessHeader : t.toastErrorHeader}
               </h4>
               <p className="text-white/70 text-sm mt-1 leading-relaxed">{notification.message}</p>
             </div>
@@ -107,24 +127,24 @@ const Contact = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="space-y-12">
+          <div className={`space-y-12 ${lang === 'AR' ? 'text-right' : 'text-left'}`}>
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Secure Your <br />
-                <span className="text-gradient-gold">Private Placement.</span>
+                {t.titlePre} <br />
+                <span className="text-gradient-gold">{t.titlePost}</span>
               </h2>
-              <p className="text-jaguar-400 text-lg max-w-md leading-relaxed">
-                Completing the official contact form is mandatory to evaluate your profile. Undocumented or direct requests will not be reviewed.
+              <p className={`text-jaguar-400 text-lg max-w-md leading-relaxed ${lang === 'AR' ? 'mr-0 ml-auto' : ''}`}>
+                {t.description}
               </p>
             </div>
 
             <div className="space-y-8">
-              <div className="flex items-center gap-6 group">
-                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-accent-gold group-hover:bg-accent-gold group-hover:text-black transition-all duration-300">
+              <div className={`flex items-center gap-6 group ${lang === 'AR' ? 'flex-row-reverse' : ''}`}>
+                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-accent-gold group-hover:bg-accent-gold group-hover:text-black transition-all duration-300 shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-jaguar-500 mb-1">Email Us</div>
+                  <div className="text-xs uppercase tracking-widest text-jaguar-500 mb-1">{t.emailUs}</div>
                   <div className="text-white font-medium">fahdbnmbarek@gmail.com</div>
                 </div>
               </div>
@@ -133,25 +153,24 @@ const Contact = () => {
                 href="https://wa.me/21650557555" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center gap-6 group w-fit cursor-pointer relative"
+                className={`flex items-center gap-6 group w-fit cursor-pointer relative ${lang === 'AR' ? 'flex-row-reverse mr-0 ml-auto' : ''}`}
               >
-                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-accent-gold group-hover:bg-accent-gold group-hover:text-black transition-all duration-300 relative">
+                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-accent-gold group-hover:bg-accent-gold group-hover:text-black transition-all duration-300 relative shrink-0">
                   <Phone className="w-5 h-5" />
-                  <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full animate-ping opacity-75"></span>
-                  <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border border-[#0d0d10]"></span>
+                  <span className={`absolute top-0 ${lang === 'AR' ? 'left-0' : 'right-0'} w-2.5 h-2.5 bg-green-500 rounded-full animate-ping opacity-75`}></span>
+                  <span className={`absolute top-0 ${lang === 'AR' ? 'left-0' : 'right-0'} w-2.5 h-2.5 bg-green-500 rounded-full border border-[#0d0d10]`}></span>
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="text-xs uppercase tracking-widest text-jaguar-500 group-hover:text-accent-gold transition-colors">whatsapp Call</div>
+                  <div className={`flex items-center gap-2 mb-1 ${lang === 'AR' ? 'flex-row-reverse' : ''}`}>
+                    <div className="text-xs uppercase tracking-widest text-jaguar-500 group-hover:text-accent-gold transition-colors">{t.whatsappCall}</div>
                     <span className="bg-green-500/10 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-green-500/20">
-                      Instant Chat
+                      {t.instantChat}
                     </span>
                   </div>
-                  <div className="text-white font-medium group-hover:text-accent-gold transition-colors">+216 50 557 555</div>
+                  <div className="text-white font-medium group-hover:text-accent-gold transition-colors" dir="ltr">+216 50 557 555</div>
                 </div>
               </a>
 
-              {/* Secure Local Image Render */}
               <div className="w-full h-72 rounded-3xl overflow-hidden border border-white/10 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-700 shadow-2xl relative bg-[#111115]">
                 <img 
                   src={gymPhoto} 
@@ -163,26 +182,25 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Form UI Frame */}
           <div className="glass-panel p-8 md:p-10 rounded-3xl border border-white/5 bg-[#111115]">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-jaguar-400 ml-1">Full Name</label>
+                <div className={`space-y-2 flex flex-col ${lang === 'AR' ? 'items-end' : 'items-start'}`}>
+                  <label className="text-xs uppercase tracking-widest text-jaguar-400 px-1">{t.labelName}</label>
                   <input 
                     type="text" 
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    placeholder="example" 
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors"
+                    placeholder={lang === 'AR' ? "مثال: أحمد بن علي" : "example"} 
+                    className={`w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors ${lang === 'AR' ? 'text-right' : 'text-left'}`}
                   />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-jaguar-400 ml-1">Email Address</label>
+                  <div className={`space-y-2 flex flex-col ${lang === 'AR' ? 'items-end' : 'items-start'}`}>
+                    <label className="text-xs uppercase tracking-widest text-jaguar-400 px-1">{t.labelEmail}</label>
                     <input 
                       type="email" 
                       name="email"
@@ -190,11 +208,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="example@example.com" 
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors"
+                      className={`w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors ${lang === 'AR' ? 'text-right' : 'text-left'}`}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-jaguar-400 ml-1">Mobile Number</label>
+                  <div className={`space-y-2 flex flex-col ${lang === 'AR' ? 'items-end' : 'items-start'}`}>
+                    <label className="text-xs uppercase tracking-widest text-jaguar-400 px-1">{t.labelPhone}</label>
                     <input 
                       type="tel" 
                       name="phone"
@@ -202,57 +220,74 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="+216 50 000 000" 
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors"
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors text-left"
+                      dir="ltr"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest text-jaguar-400 ml-1">Select Program Pack</label>
-                <div className="relative">
+              <div className={`space-y-2 flex flex-col ${lang === 'AR' ? 'items-end' : 'items-start'}`}>
+                <label className="text-xs uppercase tracking-widest text-jaguar-400 px-1">{t.labelPack}</label>
+                <div className="relative w-full">
                   <select 
                     name="pack"
                     value={formData.pack}
                     onChange={handleChange}
-                    className={`w-full border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors appearance-none pr-10 ${
+                    className={`w-full border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors appearance-none ${
+                      lang === 'AR' ? 'pl-10 pr-4 text-right' : 'pr-10 pl-4 text-left'
+                    } ${
                       formData.pack === 'PACK 5 — VIP 1:1 COACHING' 
                         ? 'bg-accent-gold/10 border-accent-gold text-accent-gold font-bold' 
                         : 'bg-[#141418] border-white/10'
                     }`}
                   >
-                    <option value="PACK 1 — STARTER" className="bg-[#141418] text-white">PACK 1 — STARTER (30 Days)</option>
-                    <option value="PACK 2 — TRANSFORMATION" className="bg-[#141418] text-white">PACK 2 — TRANSFORMATION (90 Days)</option>
-                    <option value="PACK 3 — ELITE TRANSFORMATION" className="bg-[#141418] text-white">PACK 3 — ELITE TRANSFORMATION (6 Months)</option>
-                    <option value="PACK 4 — ELITE YEAR COACHING" className="bg-[#141418] text-white">PACK 4 — ELITE YEAR COACHING (12 Months)</option>
-                    <option value="PACK 5 — VIP 1:1 COACHING" className="bg-accent-gold text-black font-bold">👑 PACK 5 — VIP 1:1 COACHING (Premium Selection)</option>
+                    <option value="PACK 1 — STARTER" className="bg-[#141418] text-white">
+                      {currentDict.packs?.pack1?.name || "PACK 1 — STARTER"} ({lang === 'AR' ? '30 يوم' : '30 Days'})
+                    </option>
+                    <option value="PACK 2 — TRANSFORMATION" className="bg-[#141418] text-white">
+                      {currentDict.packs?.pack2?.name || "PACK 2 — TRANSFORMATION"} ({lang === 'AR' ? '90 يوم' : '90 Days'})
+                    </option>
+                    <option value="PACK 3 — ELITE TRANSFORMATION" className="bg-[#141418] text-white">
+                      {currentDict.packs?.pack3?.name || "PACK 3 — ELITE TRANSFORMATION"} ({lang === 'AR' ? '6 أشهر' : '6 Months'})
+                    </option>
+                    <option value="PACK 4 — ELITE YEAR COACHING" className="bg-[#141418] text-white">
+                      {currentDict.packs?.pack4?.name || "PACK 4 — ELITE YEAR COACHING"} ({lang === 'AR' ? '12 شهر' : '12 Months'})
+                    </option>
+                    <option value="PACK 5 — VIP 1:1 COACHING" className={`${lang === 'AR' ? 'bg-[#141418] text-accent-gold' : 'bg-accent-gold text-black'} font-bold`}>
+                      👑 {currentDict.packs?.pack5?.name || "PACK 5 — VIP 1:1 COACHING"} ({lang === 'AR' ? 'خيارات مميزة' : 'Premium Selection'})
+                    </option>
                   </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-jaguar-400">
+                  <div className={`absolute inset-y-0 ${lang === 'AR' ? 'left-3' : 'right-3'} flex items-center pointer-events-none text-jaguar-400`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest text-jaguar-400 ml-1">Message</label>
+              <div className={`space-y-2 flex flex-col ${lang === 'AR' ? 'items-end' : 'items-start'}`}>
+                <label className="text-xs uppercase tracking-widest text-jaguar-400 px-1">{t.labelMessage}</label>
                 <textarea 
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows="4" 
-                  placeholder="How can we help you reach your peak?" 
-                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors resize-none"
+                  placeholder={t.placeholderMessage} 
+                  className={`w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent-gold/50 transition-colors resize-none ${lang === 'AR' ? 'text-right' : 'text-left'}`}
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
                 disabled={isSending}
-                className="w-full bg-white text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-accent-gold transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`w-full bg-white text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-accent-gold transition-all group disabled:opacity-50 disabled:cursor-not-allowed ${
+                  lang === 'AR' ? 'flex-row-reverse' : ''
+                }`}
               >
-                {isSending ? "Sending..." : "Send Inquiry"}
-                <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                {isSending ? t.btnSending : t.btnSend}
+                <Send className={`w-4 h-4 transition-transform ${
+                  lang === 'AR' ? 'group-hover:-translate-x-1 group-hover:-translate-y-1 rotate-180' : 'group-hover:translate-x-1 group-hover:-translate-y-1'
+                }`} />
               </button>
             </form>
           </div>

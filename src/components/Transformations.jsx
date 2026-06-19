@@ -18,59 +18,122 @@ import img11 from "../assets/img11.jpeg";
 import img12 from "../assets/img12.jpeg";
 import img13 from "../assets/img13.jpeg";
 import img14 from "../assets/img14.jpeg";
+import img17 from "../assets/img17.jpeg";
+import img16 from "../assets/img16.jpeg";
+import img15 from "../assets/img15.jpeg";
+import img18 from "../assets/img18.jpeg";
+import img20 from "../assets/img20.jpeg";
+
 
 const Transformations = () => {
   const [activeLightbox, setActiveLightbox] = useState(null);
 
   const showcaseCards = [
-    { 
-     
-      duration: "3 Months", 
-      meta: "DAY 0 / MUSCLE GAIN & FAT LOSS / Day 104",
-      combinedImg: img1 
-    },
+    
+{  duration: "6 Months", meta: "DAY 0 / MUSCLE GAIN / 180 Days", combinedImg: img7 },
+    {  duration: "2 Months", meta: "DAY 0 / FAT LOSS / 60 Days", combinedImg: img10 },
+    {  duration: "3 Months", meta: "DAY 0 / MUSCLE GAIN / 90 Days", combinedImg: img11 },
+
+
+
     { 
       
-      duration: "3 Months", 
-      meta: "DAY 0 / BODY RECOMP / DAY 90",
+      duration: "2 Month", 
+      meta: "DAY 0 / FAT LOSS & MUSCLE GAIN / 60 Days",
+      combinedImg: img17
+    },
+    
+    {  duration: "2 Months", meta: "DAY 0 / MUSCLE GAIN / 60 Days", combinedImg: img12 },
+
+    { 
+     
+      duration: "3 Month", 
+      meta: "DAY 0 / FAT LOSS & MUSCLE GAIN/ 90 Days ",
+      combinedImg: img15
+    },
+    
+    { 
+     
+      duration: "1 Month", 
+      meta: "DAY 0 / FAT LOSS / 30 Days",
       combinedImg: img2 
     },
     { 
-       
+      
       duration: "1 Month", 
-      meta: "DAY 0 / FAT LOSS / Day 30",
+      meta: "DAY 0 / FAT LOSS / 30 Days",
+      combinedImg: img18 
+    },
+    { 
+      
+      duration: "6 Months",
+      meta: "DAY 0 / MUSCLE GAIN / 180 Days",
+      combinedImg: img4 
+    },
+
+    { 
+      
+      duration: "6 Months" , 
+      meta: "DAY 0 / Muscle Gain / 180 Days",
+      combinedImg: img1 
+    },
+     { 
+      
+      duration: "3 Months ", 
+      meta: "DAY 0 / MUSCLE GAIN / 90 Days ",
+      combinedImg: img6 
+    },
+    
+    
+    
+{ 
+      
+      duration: "3 Month", 
+      meta: "DAY 0 / FAT LOSS / 90 Days",
+      combinedImg: img14
+    },
+   { 
+     
+      duration: "1 Month", 
+      meta: "DAY 0 / FAT LOSS / 30 Days",
       combinedImg: img3 
     },
+    
+    {  duration: "3 Months", meta: "DAY 0 / MUSCLE GAIN / 90 Days",combinedImg: img8 },
+    
     { 
       
       duration: "1 Months", 
-      meta: "DAY 0 / FAT LOSS / Day 30",
-      combinedImg: img4 
-    },
-    { 
-       
-      duration: "3 Months", 
-      meta: "DAY 0 / FAT LOSS / Day 90",
+      meta: "DAY 0 / FAT LOSS / 30 Days ",
       combinedImg: img5 
     },
+    
+  
+
+     { 
+      
+      duration: "3 Months",
+      meta: "DAY 0 / FAT LOSS / 90 Days",
+      combinedImg: img16
+    },
+    
+    
+     { 
+      
+      duration: "1 Month", 
+      meta: "DAY 0 / FAT LOSS / 30 Days",
+      combinedImg: img20
+    },
     { 
       
-      duration: "WEEK 14", 
-      meta: "DAY 0 / MUSCLE GAIN / 98 Days",
-      combinedImg: img6 
+      duration: "1 Month", 
+      meta: "DAY 0 / FAT LOSS / 30 Days",
+      combinedImg: img9
     },
-    {  duration: "5 Months", meta: "DAY 0 / MUSCLE GAIN / 180 Days", combinedImg: img7 },
-    {  duration: "14 Weeks", meta: "DAY 0 / MUSCLE GAIN / 98 Days", combinedImg: img8 },
-    {  duration: "14 Weeks", meta: "DAY 0 / MUSCLE GAIN / 98 Days", combinedImg: img10 },
-    {  duration: "14 Weeks", meta: "DAY 0 / MUSCLE GAIN / 98 Days", combinedImg: img11 },
-    {  duration: "2 Months", meta: "DAY 0 / MUSCLE GAIN / 60 Days", combinedImg: img12 },
-    {  duration: "2 Months", meta: "DAY 0 / FAT LOSS / 60 DDays", combinedImg: img13 },
-    { 
-      
-      duration: "90 Day", 
-      meta: "DAY 0 / MASS & CONDITIONING / DAY 90",
-      combinedImg: img14 
-    },
+
+    
+
+
   ];
 
   return (
