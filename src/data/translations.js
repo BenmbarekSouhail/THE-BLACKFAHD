@@ -159,7 +159,7 @@ export const translations = {
           "Premium Flexible Elite Show & Target Adaptability",
           "Minimum 3-Month Structural Baseline Evaluation Blueprint",
           "Physique Control Oversight Without Rushed Methodologies",
-          "Natural Long-Term Extension Paths (6 Months VIP — 2500-2800 DT)",
+          "Natural Long-Term Extension Paths (6 Months VIP — 2600 DT)",
           "Full Custom Contest Prep Option (Custom pricing depending on show & duration)"
         ],
         expectations: [
@@ -329,7 +329,7 @@ export const translations = {
           "مرونة حركية واستجابة فائقة مخصصة للأهداف الاستراتيجية",
           "مخطط تقييمي بدني وهيكلي شامل كحد أدنى لمدة 3 أشهر",
           "إشراف دقيق جداً على تفاصيل الجسد دون اعتماد طرق متسرعة أو ضارة",
-          "مسارات تمديد طبيعية طويلة الأمد (6 أشهر VIP — بقيمة 2500-2800 دينار)",
+          "مسارات تمديد طبيعية طويلة الأمد (6 أشهر VIP — بقيمة 2600 دينار)",
           "خيارات تجهيز كامل للبطولات (تسعير خاص حسب البطولة والمدة المتبقية)"
         ],
         expectations: [
