@@ -61,19 +61,21 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
         
-        {/* Left Side: Brand Logo and Title */}
+        {/* Left Side: Brand Logo and Title - Balanced Mobile Containment */}
         <a 
           href="/" 
-          className="flex items-center gap-4 text-2xl md:text-3xl font-black tracking-tighter text-accent-gold uppercase hover:opacity-95 transition-opacity cursor-pointer"
+          className="flex items-center gap-2 sm:gap-4 text-lg md:text-2xl font-black tracking-tighter text-accent-gold uppercase hover:opacity-95 transition-opacity cursor-pointer min-w-0"
         >
           <img 
             src={logo} 
             alt="Logo" 
-            className={`w-auto object-contain transition-all duration-300 ${
-              isScrolled ? 'h-10 opacity-90' :  'h-24 md:h-28'
+            className={`w-auto object-contain transition-all duration-300 shrink-0 ${
+              isScrolled ? 'h-10 opacity-90' : 'h-14 sm:h-16 md:h-20'
             }`} 
           />
-          <span className="hidden sm:inline-block self-center tracking-widest font-black">BLACK FAHD</span>
+          <span className="inline-block self-center tracking-wider font-black text-xs xs:text-sm sm:text-lg md:text-xl truncate">
+            BLACK FAHD
+          </span>
         </a>
         
         {/* Center: Navigation Menu links */}
@@ -132,11 +134,11 @@ const Navbar = () => {
         </div>
         
         {/* Right Side: CTA Button Link Container */}
-        <div className="flex items-center">
+        <div className="flex items-center shrink-0">
           <a 
             href="#contact" 
             onClick={(e) => handleNavClick(e, 'contact')}
-            className="bg-accent-gold text-black px-5 py-2 rounded-full text-xs md:text-sm font-bold hover:bg-white transition-colors inline-block text-center whitespace-nowrap"
+            className="bg-accent-gold text-black px-4 py-2 sm:px-5 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold hover:bg-white transition-colors inline-block text-center whitespace-nowrap"
           >
             Join The Programme
           </a>
